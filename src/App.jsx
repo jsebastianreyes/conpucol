@@ -1,33 +1,30 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import ListCourses from './components/list-courses';
+import Header from "./components/header";
+import { useFetch } from './hooks/useFetch';
+import Loading from "./components/loading";
+import { useState } from "react";
+import Error from './components/error';
 
 function App() {
-  const [count, setCount] = useState(0)
 
+  const [search, setSearch] = useState('')
+  const [city, setCity] = useState('Ciudad')
+  const [month, setMonth] = useState('Seleccionar Mes')
+  const [category, setCategory] = useState('Default')
+  const {courses, fail, loading} = useFetch()
+
+ 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <> 
+    <Header setSearch={setSearch} 
+    courses={courses.data} 
+    setMonth={setMonth}
+    setCity={setCity}
+    setCategory={setCategory}/> 
+    
+      {fail &&  <Error/> }
+      {loading && <Loading /> }
+      {!fail && !loading > 0 && <ListCourses search={search} courses={courses} month={month} city={city} /> }
     </>
   )
 }

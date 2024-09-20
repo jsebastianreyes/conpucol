@@ -51,16 +51,14 @@ const FormStyled = styled.div`
   input[type="submit"]{
         border: 1px solid #273AA6;
         padding: .5rem;
-       
+        background: white;
         border-radius: 1.5rem;
         cursor: pointer;
-        background: transparent;
         margin-block-start: 1rem;
         margin-block-end: .5rem;
         font-weight: 600;
-        display: inline-block;
         text-align: center;
-        width: auto;
+        
         height: auto;
   }
 

@@ -72,6 +72,11 @@ const FormStyled = styled.div`
     gap: .5rem;
   }
 
+  @media screen and (max-width: 762px) {
+        .check{
+          gap: 2rem;
+        }
+    }
 `
 
 function Form({setInfoVisible}) {

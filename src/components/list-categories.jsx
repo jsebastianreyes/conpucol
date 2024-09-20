@@ -41,14 +41,23 @@ const ListCategoriesStyled = styled.section`
         font-weight: 500;
     }
  
-    @media screen and (max-width: 762px) {
+    @media screen and (max-width: 1068px) {
        &{
-        overflow-x: scroll;
-        gap: 2rem;
-        justify-content: initial;
+        gap: 4rem;
+        width: 100%;
+        max-inline-size: inherit;
        }
     }
    
+    @media screen and (max-width: 990px) {
+       &{
+        overflow-x: scroll;
+        gap: 4rem;
+        justify-content: initial;
+        width: 100%;
+        max-inline-size: inherit;
+       }
+    }
  
 `
 

@@ -58,8 +58,9 @@ const FormStyled = styled.div`
         margin-block-end: .5rem;
         font-weight: 600;
         text-align: center;
-        
+        color: #000;
         height: auto;
+        width: auto;
   }
 
   .border{

@@ -3,10 +3,10 @@ import Wrapper from './wrapper'
 import Course from './course'
 
 
-const ListCoursesStyled = styled.div`
+const ListCoursesStyled = styled.main`
     .gridResults{
         display: grid;
-        grid-template-columns: repeat( auto-fill, minmax(361px, 1fr));
+        grid-template-columns: repeat( auto-fit, minmax(360px, 1fr));
         gap: 2rem;
     }
     
@@ -22,18 +22,23 @@ const ListCoursesStyled = styled.div`
         margin-top: 8rem;
     }
 
+    @media screen and (max-width: 762px) {
+        .gridResults{
+          grid-template-columns: repeat( auto-fill, minmax(300px, 1fr));
+        }
+    }
+
 `
 
-function ListCourses({search, courses, city, month}) {
-       
+function ListCourses({search, courses, city, month, category}) {
+    console.log(category)
     let listCourses = courses?.data
 
-    if(search !== "" || city !== "Ciudad" || month !== "Seleccionar Mes"){
+    if(search !== "" || city !== "Ciudad" || month !== "Seleccionar Mes" || category !== 'Default'){
         const data = listCourses?.filter(curso => {
-          console.log(new Date(curso.start_date).getMonth())
           return curso.title.toLowerCase().includes(search) &&
           (city === 'Ciudad' || curso.city.data.name === city) &&
-          // (month === 'Seleccionar Mes' || curso.start_date === month)
+          (category === 'Default' || curso.course_type.data.name === category ) &&
           (month === 'Seleccionar Mes' || new Date(curso.start_date).getMonth() ===  new Date(month).getMonth())
       })
       listCourses = data

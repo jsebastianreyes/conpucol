@@ -19,7 +19,6 @@ const CourseStyled = styled.div`
 
     .titulo{
         font-weight: 400;
-        color: #333333;
         font-size: .9rem;
         color: #333333;
         text-transform: uppercase;

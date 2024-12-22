@@ -2,10 +2,11 @@ import ListCourses from './components/list-courses';
 import Header from "./components/header";
 import { useFetch } from './hooks/useFetch';
 import Loading from "./components/loading";
-import { useState } from "react";
 import Error from './components/error';
 import ListCategories from './components/list-categories';
 import { Toaster } from 'react-hot-toast';
+import { useState, useEffect } from "react";
+
 
 
 function App() {
@@ -16,12 +17,30 @@ function App() {
   const [category, setCategory] = useState('Default')
   const {courses, fail, loading} = useFetch()
 
+  const [windowSize, setWindowSize] = useState([
+    window.innerHeight,
+    window.innerWidth,
+  ]);
+
+  useEffect(() => {
+    window.parent.postMessage(windowSize, "*");
+    const windowSizeHandler = () => {
+      setWindowSize([window.innerWidth, window.innerHeight]);
+    };
+    window.addEventListener("resize", windowSizeHandler);
+
+    return () => {
+      window.removeEventListener("resize", windowSizeHandler);
+    };
+  }, []);
+
 
  
   return (
+
     <> 
     <div><Toaster /></div>
-
+    {console.log(windowSize)}
     <ListCategories setCategory={setCategory}/>
     <Header setSearch={setSearch} 
     courses={courses.data} 

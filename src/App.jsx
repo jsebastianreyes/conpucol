@@ -23,9 +23,10 @@ function App() {
   ]);
 
   useEffect(() => {
-    window.parent.postMessage(windowSize, "*");
+    
     const windowSizeHandler = () => {
       setWindowSize([window.innerWidth, window.innerHeight]);
+      window.parent.postMessage(windowSize, "*");
     };
     window.addEventListener("resize", windowSizeHandler);
 

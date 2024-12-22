@@ -29,7 +29,7 @@ function App() {
       if(observedDiv.current.offsetHeight !== height) {
 
         setHeight(observedDiv.current.offsetHeight);
-        window.parent.postMessage(height, "*");
+        ref.current.contentWindow.postMessage(height, origin);
       }
     });
   

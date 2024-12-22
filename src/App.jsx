@@ -5,7 +5,7 @@ import Loading from "./components/loading";
 import Error from './components/error';
 import ListCategories from './components/list-categories';
 import { Toaster } from 'react-hot-toast';
-import { useState, useEffect } from "react";
+import { useState} from "react";
 
 
 
@@ -17,23 +17,9 @@ function App() {
   const [category, setCategory] = useState('Default')
   const {courses, fail, loading} = useFetch()
 
-  const [windowSize, setWindowSize] = useState([
-    window.innerHeight,
-    window.innerWidth,
-  ]);
+ 
 
-  useEffect(() => {
-    
-    const windowSizeHandler = () => {
-      setWindowSize([window.innerWidth, window.innerHeight]);
-      window.parent.postMessage(windowSize, "*");
-    };
-    window.addEventListener("resize", windowSizeHandler);
 
-    return () => {
-      window.removeEventListener("resize", windowSizeHandler);
-    };
-  }, []);
 
 
  

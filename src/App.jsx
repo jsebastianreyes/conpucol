@@ -17,7 +17,7 @@ function App() {
   const [category, setCategory] = useState('Default')
   const {courses, fail, loading} = useFetch()
   const  observedDiv = useRef();
-  const [height, setHeight] = useState();
+  const [height, setHeight] = useState(800);
 
   useEffect(()=> {
     if (!observedDiv.current) {

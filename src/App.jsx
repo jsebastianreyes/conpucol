@@ -5,43 +5,19 @@ import Loading from "./components/loading";
 import Error from './components/error';
 import ListCategories from './components/list-categories';
 import { Toaster } from 'react-hot-toast';
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
+import { UseIframe } from './hooks/UseIframe';
 
 
 
 function App() {
-
   const [search, setSearch] = useState('')
   const [city, setCity] = useState('Ciudad')
   const [month, setMonth] = useState('Seleccionar Mes')
   const [category, setCategory] = useState('Default')
   const {courses, fail, loading} = useFetch()
   const  observedDiv = useRef();
-  const [height, setHeight] = useState(800);
-
-  useEffect(()=> {
-    if (!observedDiv.current) {
-      return;
-    }
-
-    const resizeObserver = new ResizeObserver(() => {
-     
-      if(observedDiv.current.offsetHeight !== height) {
-
-        setHeight(observedDiv.current.offsetHeight);
-        // observedDiv.current.contentWindow.postMessage(height, origin);
-          window.parent.postMessage(height, "*");
-
-      }
-    });
-  
-    resizeObserver.observe(observedDiv.current);
-
-    return function cleanup() {
-      resizeObserver.disconnect();
-    }
-  }, [observedDiv.current])
-
+  const { height } = UseIframe(observedDiv)
 
   console.log(height)
  

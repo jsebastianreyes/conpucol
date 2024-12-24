@@ -14,7 +14,7 @@ export function UseIframe(observedDiv){
           if(observedDiv.current.offsetHeight !== height) {
     
             setHeight(observedDiv.current.offsetHeight);
-            window.parent.postMessage(height, "*");
+         
           }
         });
       
@@ -25,5 +25,6 @@ export function UseIframe(observedDiv){
         }
       }, [observedDiv.current])
 
+       window.parent.postMessage(height, "*");
     return {height}
 }

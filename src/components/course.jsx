@@ -6,6 +6,11 @@ import Form from './form'
 import Category from './category'
 
 const CourseStyled = styled.div`
+
+     &{
+     min-height:500px;
+     }
+     
      .img-curso{
         block-size: 250px;
         border-radius: .5rem;

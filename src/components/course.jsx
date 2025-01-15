@@ -90,7 +90,7 @@ function Course({course}) {
            <div className='infoExtra'>
                 <p className='description' dangerouslySetInnerHTML={{__html: course.description}}></p>
                 <Form setInfoVisible={setInfoVisible}/>
-                <a className='payButton' href={`https://intranet.conpucol.org/cursos/${course.id}`}>Realizar pago - {formatPrice(course.price)}</a>
+                <a target="_blank" className='payButton' href={`https://intranet.conpucol.org/cursos/${course.id}`}>Realizar pago - {formatPrice(course.price)}</a>
           </div>
            }
            {infoVisible ? null : <p className='precio'>{formatPrice(course.price)}</p>}

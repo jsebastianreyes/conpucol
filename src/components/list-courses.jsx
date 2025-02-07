@@ -31,8 +31,11 @@ const ListCoursesStyled = styled.main`
 `
 
 function ListCourses({search, courses, city, month, category}) {
-    console.log(category)
-    let listCourses = courses?.data
+  
+    let listCourses = courses?.data.sort((a, b) => new Date(b.start_date) - new Date(a.start_date) );
+
+    // let orderCourses = listCourses.sort((a, b) => new Date(b.start_date) - new Date(a.start_date) );
+
 
     if(search !== "" || city !== "Ciudad" || month !== "Seleccionar Mes" || category !== 'Default'){
         const data = listCourses?.filter(curso => {

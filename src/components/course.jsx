@@ -55,6 +55,7 @@ const CourseStyled = styled.div`
         font-size: .8rem;
         color: #333333;  
         font-weight: 600;
+        margin-top:1.5rem;
     }
 
     .loadInfo{

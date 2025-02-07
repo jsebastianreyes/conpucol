@@ -72,11 +72,13 @@ const CourseStyled = styled.div`
 
     .infoExtra p{
         margin: .4rem 0;
+        margin-bottom: 2rem;
     }
 `
 
 function Course({course}) {
    
+ 
     const [infoVisible, setInfoVisible] = useState(false)
 
     return (
@@ -91,7 +93,7 @@ function Course({course}) {
            <div className='infoExtra'>
                 <p className='description' dangerouslySetInnerHTML={{__html: course.description}}></p>
 {/*                 <Form setInfoVisible={setInfoVisible}/> */}
-                <a target="_blank" className='payButton' href={`https://intranet.conpucol.org/cursos/${course.id}`}>Realizar pago - {formatPrice(course.price)}</a>
+                <a target="_blank" className='payButton' href={`https://intranet.conpucol.org/cursos/${course.num_id}`}>Realizar pago - {formatPrice(course.price)}</a>
           </div>
            }
            {infoVisible ? null : <p className='precio'>{formatPrice(course.price)}</p>}
